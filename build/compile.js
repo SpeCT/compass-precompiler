@@ -34,6 +34,9 @@ function compileCompass(doc, project_path, f, compress, settings, callback) {
 		for (var p in doc._compass_paths)
 			args = args.concat('-I', p)
 		var compass = spawn('compass', args, {cwd: project_path})
+		compass.stdout.on('data', function(data) {
+			console.warn("compass-precompiler ", data.toString().trim())
+		})
 		compass.on('exit', function(code) {
 			if (code)
 				return callback(new Error('Compass exit with non zero code: ' + code))
