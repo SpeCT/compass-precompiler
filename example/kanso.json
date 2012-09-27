@@ -1,0 +1,16 @@
+{
+	"name": "example-compass",
+	"description": "Example kanso project with compass-precompiler enabled",
+	"version": "1.0.0",
+
+	"attachments": ["static"],
+	"compass": {
+    "compile": ["static/css/style.sass"],
+    "remove_from_attachments": true
+	},
+
+	"dependencies": {
+		"attachments": null,
+		"compass-precompiler": null
+	}
+}
