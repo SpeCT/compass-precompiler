@@ -31,7 +31,7 @@ function compileCompass(doc, project_path, f, compress, settings, callback) {
 			'--sass-dir', path.dirname(f),
 			'--css-dir', opts.css
 		]
-		for (var p in _compass_paths)
+		for (var p in doc._compass_paths)
 			args = args.concat('-I', p)
 		var compass = spawn('compass', args, {cwd: project_path})
 		compass.on('exit', function(code) {
