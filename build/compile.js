@@ -6,7 +6,7 @@ var spawn = require('child_process').spawn,
     utils = require('kanso-utils/utils'),
     attachments = require('kanso-utils/attachments'),
     opts = {
-    	'mode': 'compress', // One of: nested, expanded, compact, compressed
+    	'mode': 'nested', // One of: nested, expanded, compact, compressed
     	'comments': false,
     	'relative': true,
     	'css': os.tmpDir()
@@ -27,7 +27,7 @@ function compileCompass(doc, project_path, f, compress, settings, callback) {
 			'compile', utils.relpath(f, project_path),
 			opts.comments ? '' : '--no-line-comments',
 			opts.relative ? '--relative-assets' : '',
-			'-s', opts.mode,
+			'-s', settings.minify ? "compressed" : opts.mode,
 			'--sass-dir', path.dirname(f),
 			'--css-dir', opts.css
 		]
