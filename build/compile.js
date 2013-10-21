@@ -5,11 +5,12 @@ var spawn = require('child_process').spawn,
     async = require('async'),
     utils = require('kanso-utils/utils'),
     attachments = require('kanso-utils/attachments'),
+    tmpDir = os.tmpDir(),
     opts = {
     	'mode': 'nested', // One of: nested, expanded, compact, compressed
     	'comments': false,
     	'relative': true,
-    	'css': os.tmpDir()
+    	'css': tmpDir.charAt(tmpDir.length-1) === '/' ? tmpDir : tmpDir+'/'
     }
 
 function compileCompass(doc, project_path, f, compress, settings, callback) {
